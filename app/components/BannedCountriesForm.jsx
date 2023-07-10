@@ -10,7 +10,7 @@ export default function BannedCountriesForm() {
     let isSubmitting = navigation.state === 'submitting';
 
     return (
-        <div className="m-1 flex flex-col items-center bg-gray-200 rounded p-2 relative">
+        <div className="m-1 flex flex-col items-center bg-gray-200 rounded p-2 relative text-black">
             <h1 className="text-2xl my-2">Banned Countries Form</h1>
             <Form id="countries-form" method="post" action="/countries" className="my-4 mx-auto max-w-prose grid gap-4 grid-cols-3">
                 {countriesArray.map((country, i) => (
@@ -19,7 +19,7 @@ export default function BannedCountriesForm() {
                             type="checkbox"
                             name={country}
                             defaultChecked={validator.isIn(country, savedCountries)}
-                            className=""
+                            className="rounded"
                         />
                         <span className="mx-2">{country}</span>
                     </label>

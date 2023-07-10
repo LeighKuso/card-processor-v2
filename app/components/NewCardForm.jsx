@@ -46,7 +46,7 @@ export default function NewCardForm() {
     }
 
     return (
-        <Form id="card-form" method="post" className="p-4 mx-auto w-3/5 grid grid-cols-2 gap-3 bg-gray-200 rounded-md">
+        <Form id="card-form" method="post" className="p-4 mx-auto w-80 grid grid-cols-2 gap-3 bg-gray-200 rounded-md text-black">
             <label className="col-span-2 text-sm">
                 <span className="mb-1">
                     Name on card: {actionData?.errors?.cardName ? (

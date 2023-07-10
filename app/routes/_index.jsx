@@ -14,11 +14,11 @@ export default function Index() {
   const cards = useLoaderData();
 
   return (
-    <main className='px-4 pt-2 flex flex-col'>
-      <h1 className='mx-auto mb-4'>Welcome to... The Processor</h1>
+    <main className='h-full px-4 pt-2 flex flex-col'>
+      <h1 className='text-2xl mx-auto mb-4'>Welcome to... The Processor</h1>
 
-      <div className='h-full mt-2 p-2 mx-auto'>
-        <h1 className="text-2xl my-2">Stored Cards</h1>
+      <div className='h-100 my-auto p-2 mx-auto w-full'>
+        <h1 className="text-2xl my-4">Stored Cards</h1>
         <CardList cards={cards} />
       </div>
     </main>

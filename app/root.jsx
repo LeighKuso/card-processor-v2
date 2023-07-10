@@ -23,7 +23,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-slate-700 text-white">
         <Layout>
           <Outlet />
         </Layout>
