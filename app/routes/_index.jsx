@@ -17,7 +17,7 @@ export default function Index() {
     <main className='px-4 pt-2 flex flex-col'>
       <h1 className='mx-auto mb-4'>Welcome to... The Processor</h1>
 
-      <div className='h-full mt-2 p-2'>
+      <div className='h-full mt-2 p-2 mx-auto'>
         <h1 className="text-2xl my-2">Stored Cards</h1>
         <CardList cards={cards} />
       </div>
