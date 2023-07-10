@@ -3,6 +3,8 @@ import NewCardForm from "../components/NewCardForm";
 
 import { getCards, saveCards } from "../data/cards";
 import validateCard from "../utils/cardValidator";
+import { getUserSession } from "~/utils/session.server";
+
 
 export default function cards() {
     return (
@@ -15,10 +17,19 @@ export default function cards() {
     )
 }
 
+export async function loader({ request }) {
+    const session = await getUserSession(request);
+    if (!session) {
+        return redirect('/login');
+    } else {
+        return true;
+    }
+}
+
 export async function action({ request }) {
     const formData = await request.formData();
     const cardData = Object.fromEntries(formData);
-    const storedCards = await getCards();
+    const storedCards = await getCards(request);
     // Validation
     // validateCard(cardData); -> all validation 
     cardData.cardExpiry = `${cardData.cardExpiry_m}/${cardData.cardExpiry_y}`;
