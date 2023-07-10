@@ -1,18 +1,14 @@
 
 export default function CardList({ cards }) {
     return (
-        <div className="">
-            <h1>Stored Cards</h1>
-            <ul className="grid">
-                {cards.map(card => (
-                    <li key={card.id} className="component card">
-                        <p>{card.cardNumber}</p>
-                        <p>{card.cardName}</p>
-                        <p>{card.cardExpry}</p>
-                        <p>{card.cardCVC}</p>
-                    </li>
-                ))}
-            </ul>
+        <div className="grid grid-col-3 gap-2">
+            {cards.map(card => (
+                <div key={card.cardNumber} className="bg-gray-200 p-2">
+                    <p>Number: {card.cardNumber}</p>
+                    <p>Name: {card.cardName}</p>
+                    <p>Exp: {card.cardExpiry}</p>
+                </div>
+            ))}
         </div>
     )
 }

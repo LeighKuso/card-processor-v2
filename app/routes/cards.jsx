@@ -1,28 +1,18 @@
 import { json, redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
 import NewCardForm from "../components/NewCardForm";
-import CardList from "../components/CardList";
 
 import { getCards, saveCards } from "../data/cards";
 import validateCard from "../utils/cardValidator";
 
 export default function cards() {
-    const cards = useLoaderData();
-
     return (
-        <main>
-            <div className="flex justify-center">
-                <h1 className="heading">Cards</h1>
+        <main className="p-2">
+            <div className="mt-2 flex justify-center">
+                <h1 className="mb-2 text-xl">Validate Card Form</h1>
             </div>
             <NewCardForm />
-            <CardList cards={cards} />
         </main>
     )
-}
-
-export async function loader() {
-    const cards = await getCards();
-    return cards;
 }
 
 export async function action({ request }) {
@@ -31,13 +21,16 @@ export async function action({ request }) {
     const storedCards = await getCards();
     // Validation
     // validateCard(cardData); -> all validation 
+    cardData.cardExpiry = `${cardData.cardExpiry_m}/${cardData.cardExpiry_y}`;
     const validationErrors = await validateCard(cardData);
 
     if (!!validationErrors) {
         return json({ errors: validationErrors })
     }
-    
-    cardData.id = cardData.cardNumber;
+    if (storedCards.filter(x => x.cardNumber == cardData.cardNumber).length > 0) {
+        return json({ errors: { cardNumber: 'This card has already been saved.' } })
+    }
+
     await saveCards(storedCards.concat(cardData));
-    return redirect('/cards');
+    return redirect('/');
 }

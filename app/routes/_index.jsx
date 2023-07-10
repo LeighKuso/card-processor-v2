@@ -1,4 +1,7 @@
-import BannedCountriesForm from '~/components/BannedCountriesForm';
+import { useLoaderData } from "@remix-run/react";
+import { getCards } from "../data/cards";
+
+import CardList from "~/components/CardList";
 
 export const meta = () => {
   return [
@@ -8,13 +11,21 @@ export const meta = () => {
 };
 
 export default function Index() {
+  const cards = useLoaderData();
+
   return (
-    <div className='h-screen mw-80 flex justify-center'>
-      <h1 className='heading'>Welcome to... The Processor</h1>
-      
-      <main className='h-full '>
-        <BannedCountriesForm />
-      </main>
-    </div>
+    <main className='px-4 pt-2 flex flex-col'>
+      <h1 className='mx-auto mb-4'>Welcome to... The Processor</h1>
+
+      <div className='h-full mt-2 p-2'>
+        <h1 className="text-2xl my-2">Stored Cards</h1>
+        <CardList cards={cards} />
+      </div>
+    </main>
   );
+}
+
+export async function loader() {
+  const cards = await getCards();
+  return cards;
 }

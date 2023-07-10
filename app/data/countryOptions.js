@@ -3,7 +3,7 @@ export default function countryOptions() {
         "South Africa",
         "United States",
         "United Kindom",
-        "canada",
+        "Canada",
         "Spain",
         "Algeria",
         "Russia",

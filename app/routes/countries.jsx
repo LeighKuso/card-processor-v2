@@ -1,4 +1,4 @@
-import { json, redirect } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import BannedCountriesForm from "../components/BannedCountriesForm";
 import { getCountries, saveCountries } from "../data/countries";
@@ -8,10 +8,7 @@ export default function countries() {
     const countries = useLoaderData();
 
     return (
-        <main>
-            <div className="flex justify-center">
-                <h1 className="heading">Cards</h1>
-            </div>
+        <main className="m-2">
             <BannedCountriesForm />
             <BannedCountriesList countries={countries} />
         </main>
@@ -19,15 +16,15 @@ export default function countries() {
 }
 
 export async function loader() {
-    const cards = await getCards();
-    return cards;
+    const countries = await getCountries();
+    return countries;
 }
 
 export async function action({ request }) {
     const formData = await request.formData();
-    const bannedCountries = [...formData];
-    // clean out <select> name values
+    const formJson = Object.fromEntries(formData.entries())
+    const formArray = Object.keys(formJson);
 
-    await saveCountries(bannedCountries);
-    return redirect('/cards');
+    await saveCountries(formArray);
+    return redirect('/countries');
 }
