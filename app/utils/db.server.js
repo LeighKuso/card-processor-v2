@@ -41,7 +41,13 @@ if (!Firebase?.apps?.length) {
 
 async function signIn(email, password) {
   const auth = getAuth();
-  return signInWithEmailAndPassword(auth, email, password);
+  return signInWithEmailAndPassword(auth, email, password)
+    .then(user => (user))
+    .catch(err => ({
+      error: {
+        code: err.code,
+        message: err.message
+      }}));
 }
 
 async function getSessionToken(idToken) {

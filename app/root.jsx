@@ -1,5 +1,5 @@
 import stylesheet from "~/tailwind.css";
-import { redirect } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import Layout from "./components/Layout";
 import { getUserSession } from "./utils/session.server";
@@ -16,6 +17,8 @@ export const links = () => [
 ];
 
 export default function App() {
+  const data = useLoaderData();
+
   return (
     <html lang="en">
       <head>
@@ -25,7 +28,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-slate-700 text-white">
-        <Layout>
+        <Layout session={data?.session}>
           <Outlet />
         </Layout>
         <ScrollRestoration />
@@ -34,6 +37,15 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export async function loader({ request }) {
+  const session = await getUserSession(request);
+  if (!session) {
+    return json({session:false});
+  } else {
+    return json({session:true});
+  }
 }
 
 export function CatchBoundary() {
@@ -60,30 +72,30 @@ export function CatchBoundary() {
   }
 
   return (
-      <Layout>
-        <h1>
-          {caught.status}: {caught.statusText}
-        </h1>
-        {message}
-      </Layout>
+    <Layout>
+      <h1>
+        {caught.status}: {caught.statusText}
+      </h1>
+      {message}
+    </Layout>
   );
 }
 
 export function ErrorBoundary({ error }) {
   console.error(error);
   return (
-      <Layout>
+    <Layout>
+      <div className="bg-slate-700 text-white">
+        <h1>Oops! There was an error</h1>
+        <p>{error?.message || error?.code}</p>
+        <hr />
+        <p>
+          You were not supposed to see this.
+        </p>
         <div>
-          <h1>Oops! There was an error</h1>
-          <p>{error.message}</p>
-          <hr />
-          <p>
-            You were not supposed to see this.
-          </p>
-            <div>
-              <img src="https://media.giphy.com/media/GDnomdqpSHlIs/giphy.gif" alt="Oppsies" />
-            </div>
+          <img src="https://media.giphy.com/media/GDnomdqpSHlIs/giphy.gif" alt="Oppsies" />
         </div>
-      </Layout>
+      </div>
+    </Layout>
   );
 }

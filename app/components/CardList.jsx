@@ -6,17 +6,17 @@ export default function CardList({ cards }) {
                 <div key={card.cardNumber} className="flex justify-between bg-blue-400 p-4 min-h-[150px] h-full min-w-[250px] max-w-[300px] text-black shadow-2xl rounded-xl">
                     <div className="flex flex-col justify-between">
                         <div>
-                            <p className="font-thin">CARD HOLDER </p>
+                            <p className="font-thin text-gray-100">CARD HOLDER </p>
                             {card.cardName}
                         </div>
                         <div >
-                            <p className="font-light">CARD NUMBER </p>
+                            <p className="font-light text-gray-100">CARD NUMBER </p>
                             {card.cardNumber}
                         </div>
 
                     </div>
                     <div className="self-end">
-                        <p className="font-light">EXPIRY </p>
+                        <p className="font-light text-gray-100">EXPIRY </p>
                         {card.cardExpiry}
                     </div>
                 </div>

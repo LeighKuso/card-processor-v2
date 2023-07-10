@@ -31,7 +31,6 @@ export async function action({ request }) {
     const cardData = Object.fromEntries(formData);
     const storedCards = await getCards(request);
     // Validation
-    // validateCard(cardData); -> all validation 
     cardData.cardExpiry = `${cardData.cardExpiry_m}/${cardData.cardExpiry_y}`;
     const validationErrors = await validateCard(cardData);
 

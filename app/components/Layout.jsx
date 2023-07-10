@@ -1,9 +1,9 @@
 
-import { Form, Link, useLoaderData } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 
 const linkItemsClasses = "mx-2 px-2 py-1 md:my-4 md:px-0 md:border-b-2 md:border-b-gray-600 md:rounded-none md:bg-transparent";
 
-export default function Layout({ children }) {
+export default function Layout({ children, session }) {
     return (
         <div
             id="remix-card-processor"
@@ -30,7 +30,16 @@ export default function Layout({ children }) {
             <footer className="h-10 w-full text-xs flex justify-center">
                 <div>
                     <p>&copy; Ashleigh Davidson</p>
-                    
+                    {session? (
+                        <Form method='post' action='/signOut'>
+                        <button
+                            type="submit"
+                            className="rounded my-2 mx-4 px-3 py-2 absolute bottom-0 right-0 bg-purple-500 active:bg-purple-300 hover:bg-purple-700"
+                        >
+                            Sign Out
+                        </button>
+                    </Form>
+                    ): null}
                 </div>
             </footer>
         </div>
