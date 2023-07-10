@@ -1,1 +1,3 @@
-{"cards":[{"cardName":"Test","cardNumber":"4242424242424242","cardExpiry_m":"11","cardExpiry_y":"24","cardCVC":"123","country":"Algeria","cardExpiry":"11/24"},{"cardName":"Testing","cardNumber":"4000056655665556","cardExpiry_m":"11","cardExpiry_y":"24","cardCVC":"123","country":"Algeria","cardExpiry":"11/24"},{"cardName":"Test","cardNumber":"5555555555554444","cardExpiry_m":"11","cardExpiry_y":"33","cardCVC":"122","country":"Algeria","cardExpiry":"11/33"},{"cardName":"Johny","cardNumber":"2223003122003222","cardExpiry_m":"11","cardExpiry_y":"24","cardCVC":"123","country":"Algeria","cardExpiry":"11/24"}]}
+{
+    "cards": []
+}

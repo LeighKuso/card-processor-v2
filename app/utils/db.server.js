@@ -14,14 +14,13 @@ require("dotenv").config();
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBo5b8_3Ii901CQG3cjoyYLsZledjKw4hE",
-  authDomain: "card-processor.firebaseapp.com",
-  databaseURL: "https://card-processor-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "card-processor",
-  storageBucket: "card-processor.appspot.com",
-  messagingSenderId: "651371541694",
-  appId: "1:651371541694:web:d320c6fc83282199d91aef",
-  measurementId: "G-WGG79SKPYY"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DB_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MESSUREMENT_ID
 };
 
 if (!admin.apps.length) {

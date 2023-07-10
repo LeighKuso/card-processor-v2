@@ -19,5 +19,18 @@ export async function saveCards(cards) {
     if (!sessionUser) {
         return redirect("/login");
     }
-    return fs.writeFile('cards.json', JSON.stringify({ cards: cards || [] }))
+    return fs.writeFile('cards.json', JSON.stringify({ cards: cards || [] }));
+}
+
+export async function resetCards() {
+    const cards = [{
+        "cardName": "Suggar daddy",
+        "cardNumber": "2223003122003222",
+        "cardExpiry_m": "11",
+        "cardExpiry_y": "99",
+        "cardCVC": "123",
+        "country": "Algeria",
+        "cardExpiry": "11/99"
+    }]
+    return fs.writeFile('cards.json', JSON.stringify({ cards: cards || [] }));
 }
