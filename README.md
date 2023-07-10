@@ -1,53 +1,53 @@
-# Welcome to Remix!
 
-- [Remix Docs](https://remix.run/docs)
+# Card Validator
 
-## Development
+This is a project that provides a simple interface for users to validate credit card numbers. It utilizes the Luhn algorithm to verify the card numbers.
 
-From your terminal:
 
-```sh
-npm run dev
+## Tech Stack
+
+**Client:** React, Remix, TailwindCSS
+
+**Server:** Node, Firebase
+
+
+## Environment Variables
+
+You will need the following values in a .env file. There are additional instructions with the email provided for the assessment.
+
+`FIREBASE_API_KEY` \
+`FIREBASE_AUTH_DOMAIN`\
+`FIREBASE_DB_URL`\
+`FIREBASE_PROJECT_ID`\
+`FIREBASE_STORAGE`\
+`FIREBASE_APP_ID`\
+`FIREBASE_MESSUREMENT_ID`\
+`GOOGLE_APPLICATION_CREDENTIALS`\
+`SESSION_SECRET`
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/LeighKuso/card-processor-v2
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+Go to the project directory
 
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
+```bash
+  cd card-processor-v2
 ```
 
-Then run the app in production mode:
+Install dependencies
 
-```sh
-npm start
+```bash
+  npm install
 ```
 
-Now you'll need to pick a host to deploy it to.
+Start the server
 
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
-
-### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
+```bash
+  npm run dev
 ```
