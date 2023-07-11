@@ -41,6 +41,6 @@ export async function action({ request }) {
         return json({ errors: { cardNumber: 'This card has already been saved.' } })
     }
 
-    await saveCards(storedCards.concat(cardData));
+    await saveCards(storedCards.concat(cardData), request);
     return redirect('/');
 }

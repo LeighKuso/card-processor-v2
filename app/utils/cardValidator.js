@@ -6,9 +6,7 @@ export default async function validateCard({ cardName, cardNumber, cardExpiry_y,
     const BannedCountries = await getCountries();
     const currentDate = new Date(Date.now());
 
-    if (validator.trim(cardName).length < 1) {
-        errors.cardName = "This field is required."
-    } else if (!validator.isAlpha(cardName)) {
+    if (!validator.isAlpha(cardName)) {
         errors.cardName = "This field can't contain numbers.";
     }
 

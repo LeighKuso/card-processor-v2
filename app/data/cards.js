@@ -14,7 +14,7 @@ export async function getCards(request) {
     return storedData;
 }
 
-export async function saveCards(cards) {
+export async function saveCards(cards, request) {
     const sessionUser = await getUserSession(request);
     if (!sessionUser) {
         return redirect("/login");
@@ -24,7 +24,7 @@ export async function saveCards(cards) {
 
 export async function resetCards() {
     const cards = [{
-        "cardName": "Suggar daddy",
+        "cardName": "Suggar Daddy",
         "cardNumber": "2223003122003222",
         "cardExpiry_m": "11",
         "cardExpiry_y": "99",

@@ -1,5 +1,5 @@
 import stylesheet from "~/tailwind.css";
-import { json, redirect } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import {
   Links,
   LiveReload,

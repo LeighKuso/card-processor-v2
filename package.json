@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-input-mask": "^2.0.4",
+    "remix": "^1.18.1",
     "validator": "^13.9.0"
   },
   "devDependencies": {

@@ -13,7 +13,7 @@ export default function LoginForm() {
     <div className="h-full px-4 pt-2 flex flex-col">
       <h1 className="text-2xl mx-auto mb-4">Login Page</h1>
 
-      <Form method="post" className="h-100 m-auto p-2 w-80">
+      <Form method="post" action="/login" className="h-100 m-auto p-2 w-80">
         <label>
           Email
           <input
@@ -38,12 +38,12 @@ export default function LoginForm() {
         >
           LOGIN
         </button>
+        {actionData?.error ?
+          <p className="text-red-600 text-2xs w-full">
+            ERROR: {actionData.error.code}
+          </p>
+          : null}
       </Form>
-      {actionData?.error ?
-        <p className="text-red-600 text-2xs w-full">
-          ERROR: {actionData.error.code}
-        </p>
-        : null}
     </div>
   );
 }

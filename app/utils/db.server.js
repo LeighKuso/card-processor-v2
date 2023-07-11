@@ -9,6 +9,7 @@ import {
   getAuth,
   signOut,
 } from "firebase/auth";
+import { resetCards } from "~/data/cards";
 
 require("dotenv").config();
 
@@ -60,6 +61,7 @@ async function getSessionToken(idToken) {
 
 async function signOutFirebase() {
   await signOut(getAuth());
+  return await resetCards();
 }
 
 export { getSessionToken, signOutFirebase, signIn, adminAuth };
